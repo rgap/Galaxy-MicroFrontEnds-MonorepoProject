@@ -1,0 +1,14 @@
+{
+  "name": "mfe-monorepo",
+  "version": "1.0.0",
+  "description": "Microfrontend Monorepo with Module Federation and Single-spa",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --parallel --filter mfe-* run build",
+    "serve": "pnpm --parallel --filter mfe-* run serve",
+    "start": "concurrently \"pnpm --parallel --filter mfe-* run start\" \"pnpm --parallel --filter mfe-* run serve\""
+  },
+  "devDependencies": {
+    "concurrently": "8.2.2"
+  }
+} 

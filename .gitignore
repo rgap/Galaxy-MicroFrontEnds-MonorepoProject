@@ -1,0 +1,30 @@
+# Dependencies
+node_modules
+.pnpm-store
+.pnpm-debug.log
+
+# Build outputs
+dist
+build
+*.tsbuildinfo
+
+# IDE and editor files
+.idea
+.vscode
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+.temp
+.cache
+
+# TypeScript
+*.tsbuildinfo
+
+# Webpack
+stats.json
+webpack-stats.json
