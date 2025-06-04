@@ -1,23 +1,36 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
-const mount = () => {
-  const container = document.getElementById('root');
-  if (container) {
-    const root = createRoot(container);
-    root.render(
-      <React.StrictMode>
+// Mount function for running the app both standalone and as a remote
+const mount = (element) => {
+  const root = createRoot(element);
+
+  root.render(
+    <React.StrictMode>
+      {/* Wrap with BrowserRouter only in development/standalone mode */}
+      {process.env.NODE_ENV === 'development' ? (
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      ) : (
         <App />
-      </React.StrictMode>
-    );
-  }
+      )}
+    </React.StrictMode>
+  );
+
+  return root;
 };
 
-// Mount immediately if we're running in standalone mode
+// If we are in development and running the app standalone
 if (process.env.NODE_ENV === 'development') {
-  mount();
+  const element = document.getElementById('root');
+  if (element) {
+    mount(element);
+  }
 }
 
-// Export mount function for container app
+// We are running through container
+// and we should export the mount function
 export { mount };
