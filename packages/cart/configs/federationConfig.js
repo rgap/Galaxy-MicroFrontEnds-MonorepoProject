@@ -1,13 +1,12 @@
 const { dependencies } = require('../package.json');
 
 module.exports = {
-  name: 'host',
+  name: 'cart',
   filename: 'remoteEntry.js',
-  remotes: {
-    catalog: 'catalog@http://localhost:3001/remoteEntry.js',
-    cart: 'cart@http://localhost:3002/remoteEntry.js',
-    // Temporarily commented out until we create this app
-    // checkout: 'checkout@http://localhost:3003/remoteEntry.js'
+  exposes: {
+    './App': './src/App',
+    './CartContext': './src/context/CartContext',
+    './useCart': './src/hooks/useCart'
   },
   shared: {
     ...dependencies,
