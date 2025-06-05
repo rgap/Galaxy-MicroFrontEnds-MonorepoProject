@@ -6,8 +6,6 @@ module.exports = {
   remotes: {
     catalog: 'catalog@http://localhost:3001/remoteEntry.js',
     cart: 'cart@http://localhost:3002/remoteEntry.js',
-    // Temporarily commented out until we create this app
-    // checkout: 'checkout@http://localhost:3003/remoteEntry.js'
   },
   shared: {
     ...dependencies,

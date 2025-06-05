@@ -1,69 +1,77 @@
+import { useCart } from 'cart/CartContext';
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-
-const mockProducts = [
-  { id: 1, name: 'Product 1', price: 99.99, category: 'Electronics', description: 'A high-quality electronic device' },
-  { id: 2, name: 'Product 2', price: 149.99, category: 'Electronics', description: 'Another amazing electronic product' },
-  { id: 3, name: 'Product 3', price: 79.99, category: 'Clothing', description: 'Comfortable and stylish clothing' },
-  { id: 4, name: 'Product 4', price: 199.99, category: 'Home', description: 'Essential home item' },
-];
+import { useParams } from 'react-router-dom';
 
 const ProductDetails = () => {
-  const { id } = useParams();
-  const product = mockProducts.find(p => p.id === parseInt(id));
+  const { productId } = useParams();
+  const { addItem } = useCart();
 
-  if (!product) {
-    return (
-      <div style={{ padding: '20px' }}>
-        <h2>Product not found</h2>
-        <Link to="..">Back to Catalog</Link>
-      </div>
-    );
-  }
+  // Mock product data (in a real app, this would come from an API)
+  const product = {
+    id: productId,
+    name: `Product ${productId}`,
+    price: 99.99,
+    description: 'This is a detailed description of the product.',
+    image: 'https://cdn-icons-png.flaticon.com/512/3775/3775364.png'
+  };
+
+  const handleAddToCart = () => {
+    addItem(product);
+  };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <Link 
-        to=".."
-        style={{
-          display: 'inline-block',
-          marginBottom: '20px',
-          color: '#007bff',
-          textDecoration: 'none'
-        }}
-      >
-        ← Back to Catalog
-      </Link>
-
-      <div style={{ 
-        border: '1px solid #ddd',
-        padding: '20px',
-        borderRadius: '8px',
-        maxWidth: '600px',
-        margin: '0 auto'
+    <div style={{
+      padding: '2rem',
+      maxWidth: '1200px',
+      margin: '0 auto'
+    }}>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '2rem'
       }}>
-        <h1>{product.name}</h1>
-        <div style={{ margin: '20px 0' }}>
-          <p><strong>Category:</strong> {product.category}</p>
-          <p><strong>Price:</strong> ${product.price}</p>
-          <p><strong>Description:</strong> {product.description}</p>
+        <div>
+          <img
+            src={product.image}
+            alt={product.name}
+            style={{
+              width: '100%',
+              borderRadius: '8px'
+            }}
+          />
         </div>
-        <button
-          onClick={() => {
-            // Here you would typically dispatch an action to add the item to the cart
-            alert('Item added to cart!');
-          }}
-          style={{
-            padding: '10px 20px',
-            backgroundColor: '#28a745',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
-          Add to Cart
-        </button>
+        
+        <div>
+          <h1>{product.name}</h1>
+          <p style={{
+            fontSize: '1.5rem',
+            color: '#333',
+            margin: '1rem 0'
+          }}>
+            ${product.price}
+          </p>
+          <p style={{
+            color: '#666',
+            marginBottom: '2rem'
+          }}>
+            {product.description}
+          </p>
+          
+          <button
+            onClick={handleAddToCart}
+            style={{
+              backgroundColor: '#28a745',
+              color: 'white',
+              border: 'none',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '4px',
+              fontSize: '1rem',
+              cursor: 'pointer'
+            }}
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );

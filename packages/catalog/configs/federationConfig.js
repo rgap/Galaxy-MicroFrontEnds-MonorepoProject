@@ -8,6 +8,9 @@ module.exports = {
     './ProductList': './src/components/ProductList',
     './ProductDetails': './src/components/ProductDetails'
   },
+  remotes: {
+    cart: 'cart@http://localhost:3002/remoteEntry.js'
+  },
   shared: {
     ...dependencies,
     react: {

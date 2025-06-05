@@ -6,6 +6,7 @@ module.exports = {
   exposes: {
     './App': './src/App',
     './CartContext': './src/context/CartContext',
+    './CartWidget': './src/components/CartWidget',
     './useCart': './src/hooks/useCart'
   },
   shared: {

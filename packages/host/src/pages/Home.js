@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
       <h1>Welcome to Our Store</h1>
-      <p>Browse our catalog, add items to your cart, and checkout securely.</p>
+      <p>Browse our catalog and add items to your cart.</p>
     </div>
   );
 };

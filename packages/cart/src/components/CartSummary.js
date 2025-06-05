@@ -16,9 +16,8 @@ const CartSummary = () => {
       padding: '1rem',
       backgroundColor: '#f8f9fa',
       borderRadius: '4px',
-      marginTop: '1rem'
+      fontSize: '0.9rem'
     }}>
-      <h3>Cart Summary</h3>
       <div style={{
         display: 'flex',
         flexDirection: 'column',
@@ -43,7 +42,7 @@ const CartSummary = () => {
           fontWeight: 'bold',
           borderTop: '1px solid #ddd',
           paddingTop: '0.5rem',
-          marginTop: '0.5rem'
+          marginTop: '0.25rem'
         }}>
           <span>Total:</span>
           <span>${total.toFixed(2)}</span>
@@ -61,7 +60,7 @@ const CartSummary = () => {
           border: 'none',
           borderRadius: '4px',
           cursor: items.length === 0 ? 'not-allowed' : 'pointer',
-          fontSize: '1rem'
+          fontSize: '0.9rem'
         }}
       >
         Proceed to Checkout
